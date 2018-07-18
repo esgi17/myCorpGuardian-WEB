@@ -29,9 +29,10 @@ export class AuthService {
       return new Promise(
           (resolve, reject) => {
               console.log(datas);
+              //res = datas;
               const options = {
                  headers: {
-                     'Content-Type': 'application/x-www-form-urlencoded',
+                     
                      'Access-Control-Allow-Origin': '*'
                  }
               };
