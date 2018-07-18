@@ -2,8 +2,11 @@
     <div class="d-flex flex-column">
         <div id="nav-camera">
             <li class="d-flex">
-                <ul class="col" *ngFor="let camera of cameras" (click)="loadCamera()"> {{camera.name}} </ul>
+                <ul class="col" *ngFor="let camera of cameras" (click)="loadCamera(camera)" > {{camera.name}} </ul>
             </li>
         </div>
+    </div>
+    <div id="container-video" class="col">
+
     </div>
 </div>

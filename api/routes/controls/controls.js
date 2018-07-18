@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const controllers = require('../../controllers');
+const controllers = require('../../controllers/public');
 const publicRoute = require('../public');
 const ControlsController = controllers.ControlsController;
 //const HomeController = controllers.HomeController;

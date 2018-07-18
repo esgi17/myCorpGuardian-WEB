@@ -92,9 +92,9 @@ deviceRouter.delete('/:id', function (req, res) {
           });
         });
     } else {
-      res.status(400).json({
+      res.status(404).json({
           success : false,
-          status : 400,
+          status : 404,
           message : "Device not found"
       }).end();
     }
@@ -106,6 +106,25 @@ deviceRouter.delete('/:id', function (req, res) {
             message : "500 Internal Server Error"
         }).end();
     });
+});
+
+deviceRouter.get('/camera/:id?', function(req, res) {
+    var id = req.params.id;
+    DeviceController.getAllCameras( id )
+      .then( (cameras) => {
+          return res.status(200).json({
+              sucess : true,
+              status : 200,
+              datas : cameras
+          });
+      })
+      .catch( (err) => {
+          res.status(500).json({
+              success : false,
+              status : 500,
+              message : "500 Internal Server Error"
+          }).end();
+      });
 });
 
 

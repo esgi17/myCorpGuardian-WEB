@@ -19,7 +19,7 @@ export class CamerasService {
                   'Access-Control-Allow-Origin': '*'
                 }
             };
-            this.httpClient.get("http://localhost:3000/camera", options).subscribe(
+            this.httpClient.get("http://localhost:3000/device/camera/", options).subscribe(
                 (data) => {
                     resolve(data);
                 },

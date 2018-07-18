@@ -19,7 +19,6 @@ export class OverviewCameraComponent implements OnInit {
       var res = <any>{};
       this.camerasService.getAll().then(
           (result) => {
-              console.log(result);
               res = result;
               this.cameras = <Array<Object>>Object.keys(res.datas).map( key => res.datas[key]);
           },
@@ -31,6 +30,11 @@ export class OverviewCameraComponent implements OnInit {
               console.log(error);
           }
       )
+  }
+
+  loadCamera(camera) {
+      // @TODO Chargement du flux video (HTTP / RTSP ?)
+      console.log(camera)
   }
 
   ngOnInit() {

@@ -55,6 +55,18 @@ DeviceTypeController.getAll = function (id) {
     return DeviceType.findAll(options);
 };
 
+DeviceTypeController.getId = function ( name ) {
+    const options = {};
+    const where = {}
+
+    if( name !== undefined ) {
+        where.name = {
+            [Op.eq] : `${name}`
+        }
+    }
+    options.where = where;
+    return DeviceType.findAll(options);
+}
 
 // Export du controller
 module.exports = DeviceTypeController;
