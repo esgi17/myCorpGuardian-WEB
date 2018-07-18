@@ -1,0 +1,21 @@
+<div id="container-listUsers" class="container container-list">
+    <h2> Liste des utilisateurs</h2>
+    <table class="table">
+          <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Group</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let user of users">
+                  <td> {{user.id}} </td>
+                  <td> {{user.firstname}} </td>
+                  <td> {{user.lastname}} </td>
+                  <td> {{user.group_id}} </td>
+              </tr>
+          </tbody>
+      </table>
+</div>

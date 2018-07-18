@@ -1,0 +1,9 @@
+#container-listUsers {
+    height : 95vh;
+    box-shadow: 8px 8px 8px -13px #000000, -8px -8px 8px -13px #000000;
+}
+
+
+.thead-dark tr>th {
+   color : #4ba5e0 ;
+}

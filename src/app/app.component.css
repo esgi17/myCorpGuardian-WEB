@@ -1,0 +1,10 @@
+body {
+  margin : 0;
+  padding : 0;
+}
+
+#content {
+    width : 95%;
+    margin-left : 75px;
+    padding : 0;
+}
