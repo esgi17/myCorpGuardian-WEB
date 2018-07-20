@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -30,30 +30,30 @@ export class LoginComponent implements OnInit {
         });
     }
 
-    submit() {
-        var res = <any>{};
-        //console.log(this.loginForm.value);
-        const login = this.loginForm.get('login').value;
-        const password = this.loginForm.get('password').value;
-
-          const datas = {
-              'login' : login,
-              'password' : password
-          }
-          console.log(this.loginForm.get('login').value);
-          this.authService.login(datas).then(
-              (result) => {
-                  res = result;
-                  if( res !== undefined ) {
-                      localStorage.setItem('token', res.token);
-                      this.router.navigate(['/home']);
-                  }
-              },
-              (error) => {
-                  console.log(error);
-              }
-          )
-    }
+    // submit() {
+    //     var res = <any>{};
+    //     //console.log(this.loginForm.value);
+    //     const login = this.loginForm.get('login').value;
+    //     const password = this.loginForm.get('password').value;
+    //
+    //       const datas = {
+    //           'login' : login,
+    //           'password' : password
+    //       }
+    //       console.log(this.loginForm.get('login').value);
+    //       this.authService.login(datas).then(
+    //           (result) => {
+    //               res = result;
+    //               if( res !== undefined ) {
+    //                   localStorage.setItem('token', res.token);
+    //                   this.router.navigate(['/home']);
+    //               }
+    //           },
+    //           (error) => {
+    //               console.log(error);
+    //           }
+    //       )
+    // }
 
     ngOnInit() {
 

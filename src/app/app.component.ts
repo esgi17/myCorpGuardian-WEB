@@ -8,36 +8,24 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+    title = 'app';
+    isLogged = false;
 
-  constructor( private authService: AuthService, private router: Router) {
-      console.log(localStorage.getItem('isLogged'));
-      this.authService.checkLogin().then( (data:object) => {
+    constructor( private authService: AuthService, private router: Router) {
+        this.authService.checkLogin();
+        if( this.authService.isLogged )
+            this.router.navigate(['/home']);
+        else
+            this.router.navigate(['/login']);
 
-          localStorage.setItem('isLogged', "1")
-          this.router.navigate(['/home'])
-      })
-      .catch( (err) => {
+        //console.log(this.authService.checkLogin())
+        //this.authService.checkLogin();
+        //this.isLogged = sessionStorage.getItem('logged')
+        //console.log(this.isLogged)
+    }
 
-          console.log(err);
-          //this.authService.isLogged = false;
-          localStorage.setItem('isLogged', "0")
-          this.router.navigate(['/login'])
-      });
-
-      //console.log(this.authService.checkLogin())
-      //this.authService.checkLogin();
-      //this.isLogged = sessionStorage.getItem('logged')
-      //console.log(this.isLogged)
-  }
-
-  get checkLogin() : boolean {
-      if( localStorage.getItem('isLogged') == "1" ) {
-          console.log("Connected");
-          return true;
-      }
-      console.log("Not connected");
-      return false;
-  }
+    get checkLogin() : boolean {
+        return this.isLogged;
+    }
 
 }

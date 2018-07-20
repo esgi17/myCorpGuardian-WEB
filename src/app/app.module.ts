@@ -8,24 +8,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { HomeComponent } from './home/home.component';
-import { UsersComponent } from './users/users.component';
-import { DevicesComponent } from './devices/devices.component';
-import { EventsComponent } from './events/events.component';
-import { CamerasComponent } from './cameras/cameras.component';
-import { LoginComponent } from './login/login.component';
-import { AuthService } from './services/auth.service';
-import { ListUsersComponent } from './list-users/list-users.component';
-import { ListEventsComponent } from './list-events/list-events.component';
-import { OverviewCameraComponent } from './overview-camera/overview-camera.component';
-import { ListDevicesComponent } from './list-devices/list-devices.component';
+import { LoginComponent } from './pages/login/login.component';
+import { HomeComponent } from './pages/home/home.component';
 
 const appRoutes : Routes = [
     { path: 'home', component: HomeComponent },
-    { path: 'users', component: UsersComponent },
-    { path: 'events', component: EventsComponent },
-    { path: 'devices', component: DevicesComponent },
-    { path: 'cameras', component: CamerasComponent },
+    // { path: 'users', component: UsersComponent },
+    // { path: 'events', component: EventsComponent },
+    // { path: 'devices', component: DevicesComponent },
+    // { path: 'cameras', component: CamerasComponent },
     { path: 'login', component: LoginComponent},
     { path: '', component: HomeComponent}
 ];
@@ -36,20 +27,12 @@ const appRoutes : Routes = [
   declarations: [
     AppComponent,
     HeaderComponent,
-    HomeComponent,
-    UsersComponent,
-    DevicesComponent,
-    EventsComponent,
-    CamerasComponent,
     LoginComponent,
-    ListUsersComponent,
-    ListEventsComponent,
-    OverviewCameraComponent,
-    ListDevicesComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes),
+    //RouterModule.forRoot(appRoutes),
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
