@@ -9,7 +9,6 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
     title = 'app';
-    isLogged = false;
 
     constructor( private authService: AuthService, private router: Router) {
         this.authService.checkLogin();
@@ -25,7 +24,7 @@ export class AppComponent {
     }
 
     get checkLogin() : boolean {
-        return this.isLogged;
+        return this.authService.isLogged;
     }
 
 }

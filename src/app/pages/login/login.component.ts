@@ -30,30 +30,36 @@ export class LoginComponent implements OnInit {
         });
     }
 
-    // submit() {
-    //     var res = <any>{};
-    //     //console.log(this.loginForm.value);
-    //     const login = this.loginForm.get('login').value;
-    //     const password = this.loginForm.get('password').value;
-    //
-    //       const datas = {
-    //           'login' : login,
-    //           'password' : password
-    //       }
-    //       console.log(this.loginForm.get('login').value);
-    //       this.authService.login(datas).then(
-    //           (result) => {
-    //               res = result;
-    //               if( res !== undefined ) {
-    //                   localStorage.setItem('token', res.token);
-    //                   this.router.navigate(['/home']);
-    //               }
-    //           },
-    //           (error) => {
-    //               console.log(error);
-    //           }
-    //       )
-    // }
+    submit() {
+        //console.log(this.loginForm.value);
+        const login = this.loginForm.get('login').value;
+        const password = this.loginForm.get('password').value;
+
+        const datas = {
+            'login' : login,
+            'password' : password
+        }
+        if( this.authService.login(datas) ) {
+              this.router.navigate(['/home']);
+        }else {
+            alert("nope");
+        }
+
+
+          // console.log(this.loginForm.get('login').value);
+          // this.authService.login(datas).then(
+          //     (result) => {
+          //         res = result;
+          //         if( res !== undefined ) {
+          //             localStorage.setItem('token', res.token);
+          //
+          //         }
+          //     },
+          //     (error) => {
+          //         console.log(error);
+          //     }
+          // )
+    }
 
     ngOnInit() {
 

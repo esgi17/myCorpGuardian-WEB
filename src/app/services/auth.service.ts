@@ -26,6 +26,19 @@ export class AuthService {
     /**
     * Authentification
     **/
+    login( datas ) {
+        this.apiService.post("", datas)
+            .then(
+                (data) => {
+                    console.log(data);
+                    return true;
+                },
+                (error) => {
+                    console.log(error);
+                    return false;
+                }
+            )
+    }
     // login( datas ) {
     //
     //   var res = <any>{};
@@ -68,13 +81,11 @@ export class AuthService {
     checkLogin() {
         this.apiService.get("").then(
             (data) => {
-                console.log(data);
                 this.isLogged = true;
                 return true;
             },
             (error) => {
                 this.isLogged = false;
-                console.log(error);
                 return false;
             }
         )

@@ -50,6 +50,24 @@ export class ApiService {
                 )
             }
         )
+    }
 
+    post( route:string, datas:Object) {
+        return new Promise(
+            (resolve, reject) => {
+                var options = {
+                    headers : this.getHeaders()
+                }
+                this.httpClient.post(this.api + route, datas, options).subscribe(
+                    (data) => {
+                        console.log(data);
+                        resolve(data);
+                    },
+                    (error) => {
+                        reject(error);
+                    }
+                )
+            }
+        )
     }
 }
