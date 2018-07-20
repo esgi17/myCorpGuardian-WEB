@@ -24,7 +24,16 @@ export class AppComponent {
     }
 
     get checkLogin() : boolean {
-        return this.authService.isLogged;
+        var logged = false;
+        this.authService.checkLogin()
+            .then(
+                (data) => {
+                    logged = true;
+                },
+                (error) => {
+                    console.log("notLogged");
+                }
+            );
     }
 
 }

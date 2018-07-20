@@ -39,11 +39,14 @@ export class LoginComponent implements OnInit {
             'login' : login,
             'password' : password
         }
-        if( this.authService.login(datas) ) {
-              this.router.navigate(['/home']);
-        }else {
-            alert("nope");
-        }
+        this.authService.login(datas).then(
+            (result) => {
+                this.router.navigate(['/home']);
+            },
+            (error) => {
+                console.log("nope");
+            }
+        )
 
 
           // console.log(this.loginForm.get('login').value);

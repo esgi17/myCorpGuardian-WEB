@@ -27,17 +27,23 @@ export class AuthService {
     * Authentification
     **/
     login( datas ) {
-        this.apiService.post("", datas)
-            .then(
-                (data) => {
-                    console.log(data);
-                    return true;
-                },
-                (error) => {
-                    console.log(error);
-                    return false;
-                }
-            )
+        return new Promise(
+            (resolve, reject) => {
+                this.apiService.post("", datas)
+                  .then(
+                      (data) => {
+                          console.log(data);
+                          this.isLogged = true;
+                          resolve(data);
+                      },
+                      (error) => {
+                          console.log(error);
+                          this.isLogged = false;
+                          reject(error);
+                      }
+                  )
+            }
+        )
     }
     // login( datas ) {
     //
@@ -79,16 +85,21 @@ export class AuthService {
     * Verification de la connexion
     */
     checkLogin() {
-        this.apiService.get("").then(
-            (data) => {
-                this.isLogged = true;
-                return true;
-            },
-            (error) => {
-                this.isLogged = false;
-                return false;
+        return new Promise(
+            (resolve, reject) => {
+                this.apiService.get("").then(
+                    (data) => {
+                        this.isLogged = true;
+                        resolve();
+                    },
+                    (error) => {
+                        this.isLogged = false;
+                        reject();
+                    }
+                )
             }
         )
+
 
     }
 }

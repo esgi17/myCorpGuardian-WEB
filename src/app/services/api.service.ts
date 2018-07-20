@@ -9,7 +9,7 @@ export class ApiService {
     token: String;
     api = "http://localhost:3000/";
     constructor( private httpClient : HttpClient ) {
-        this.headers = this.setHeaders();
+        this.setHeaders();
     }
 
     getToken() {
@@ -25,8 +25,8 @@ export class ApiService {
     }
 
     setHeaders():Object {
-        return {
-            'Authorization' : this.getToken(),
+        this.headers = {
+            'Authorization' : this.getToken() || '',
             'Access-Control-Allow-Origin': '*'
         }
     }
@@ -37,6 +37,8 @@ export class ApiService {
                 var options = {
                     headers : this.getHeaders()
                 }
+                console.log(options);
+                console.log(this.api + route);
                 this.httpClient.get(this.api + route, options).subscribe(
                     (data) => {
                         console.log("***** Debug => (api.service) ****** ");
@@ -45,6 +47,7 @@ export class ApiService {
                         resolve(data);
                     },
                     (error) => {
+                        console.log(error);
                         reject(error);
                     }
                 )
