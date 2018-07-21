@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
 import { GroupService } from '../../../services/group.service';
 
 @Component({
@@ -10,9 +10,17 @@ export class ListGroupsComponent implements OnInit {
     selectedGroup:Object;
     groups: Array<Object>;
 
+    @Input() lastSelected: string;
     @Output() activeGroup = new EventEmitter<Object>();
 
     constructor( private groupService: GroupService) { }
+
+    isSelected(id) {
+        if( this.selectedGroup !== undefined && this.selectedGroup.id == id ) {
+            return true;
+        }
+        return false;
+    }
 
     groupExist() {
       if( this.groups !== undefined && this.groups.length > 0 ) {

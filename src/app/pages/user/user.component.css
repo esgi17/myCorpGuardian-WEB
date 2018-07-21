@@ -3,3 +3,8 @@
     padding : 10px;
     height : 90vh;
 }
+
+#content-detail {
+    margin: auto;
+    height : 45vh
+}

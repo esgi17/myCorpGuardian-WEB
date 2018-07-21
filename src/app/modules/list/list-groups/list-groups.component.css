@@ -13,3 +13,15 @@
 #notFounded {
     text-align: center;
 }
+
+.table tr {
+    cursor : pointer;
+}
+
+.table tr:hover {
+    background-color: lightgray;
+}
+
+.active-tr {
+  background-color: lightgray
+}

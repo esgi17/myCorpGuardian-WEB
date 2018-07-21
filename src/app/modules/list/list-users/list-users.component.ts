@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter  } from '@angular/core';
+import { Component, OnInit, Output, Input, EventEmitter  } from '@angular/core';
 import { UserService } from '../../../services/user.service';
 import { EventService } from '../../../services/event.service';
 
@@ -12,8 +12,16 @@ export class ListUsersComponent {
     selectedUser:{};
     users: Array<Object>;
 
+    @Input() lastSelected: string;
     @Output() activeUser = new EventEmitter<Object>();
     constructor( private userService : UserService, private eventService: EventService ) {
+    }
+
+    isSelected(id) {
+        if( this.selectedUser !== undefined && this.selectedUser.id == id ) {
+            return true;
+        }
+        return false;
     }
 
     usersExist() {
@@ -48,8 +56,9 @@ export class ListUsersComponent {
               this.userService.getPass(user.id)
                     .then(
                         (result) => {
+                            console.log(result);
                             var res = <any>{};
-                            var pass_id = result[0].id;
+                            var pass_id = result.datas[0].id;
 
                             this.eventService.getEventsFromPass(pass_id)
                                 .then(
@@ -64,9 +73,12 @@ export class ListUsersComponent {
                                     }
                                 )
                                 .catch( (err) => {
-                                    console.log(err);
-                                }
-                            )
+                                      console.log(err);
+                                      reject(error);
+                                });
+                        },
+                        (error) => {
+                            reject(error);
                         }
                     )
                     .catch( (err) => {

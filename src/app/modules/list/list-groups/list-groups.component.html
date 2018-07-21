@@ -9,7 +9,7 @@
               </tr>
           </thead>
           <tbody *ngIf="groupExist()">
-              <tr  *ngFor="let group of groups" (click)="selectActiveGroup(group)">
+              <tr  *ngFor="let group of groups" (click)="selectActiveGroup(group)" [ngClass]="isSelected(group.id) && lastSelected == 'group' ? 'active-tr' : ''">
                   <td> {{group.id}} </td>
                   <td> {{group.name}} </td>
                   <td> {{group.users.length}} </td>

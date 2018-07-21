@@ -10,7 +10,7 @@
               </tr>
           </thead>
           <tbody *ngIf="usersExist()">
-              <tr  *ngFor="let user of users" (click)="selectActiveUser(user)">
+              <tr  *ngFor="let user of users" (click)="selectActiveUser(user)" [ngClass]="isSelected(user.id) && lastSelected == 'user' ? 'active-tr' : ''">
                   <td> {{user.id}} </td>
                   <td> {{user.firstname}} </td>
                   <td> {{user.lastname}} </td>

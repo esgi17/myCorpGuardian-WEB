@@ -1,11 +1,10 @@
 <div id="container-users" class="container-fluid">
     <div class="d-flex justify-content-around">
         <div class="col">
-            <app-list-users class="col-12" (activeUser)="loadActiveUser($event)" ></app-list-users>
-
-            <app-list-groups class="col-12" (activeGroup)="loadActiveGroup($event)"></app-list-groups>
+            <app-list-users class="col-12" (activeUser)="loadActiveUser($event)" [lastSelected]="lastSelected" ></app-list-users>
+            <app-list-groups class="col-12" (activeGroup)="loadActiveGroup($event)" [lastSelected]="lastSelected"></app-list-groups>
         </div>
-        <div class="col">
+        <div id="content-detail" class="col">
             <app-detail-user class="col" *ngIf="isActiveUser()" [activeUser]="activeUser"></app-detail-user>
             <app-detail-group class="col" *ngIf="isActiveGroup()" [activeGroup]="activeGroup"></app-detail-group>
         </div>
