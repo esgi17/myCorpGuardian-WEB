@@ -1,0 +1,47 @@
+<div id="container-infoGroup" class="container">
+        <div id="content-infoGroup" class="d-flex col">
+            <div class="col-1">
+                <div id="img-group-container" class="container">
+                    <img alt="Image Utilisateur" src="../../../../assets/images/group.png">
+                </div>
+            </div>
+            <div class="col">
+                <div id="detail-group" class="container">
+                    <div class="col-12">
+                        <div class="d-flex col">
+                            <div class="col detail-group-content">
+                                <h5> # </h5>
+                                <p class="data-group"> {{activeGroup?.id}} </p>
+                            </div>
+                            <div class="col detail-group-content">
+                                <h5> name </h5>
+                                <p class="data-group"> {{activeGroup?.name}} </p>
+                            </div>
+                            <div class="col detail-group-content">
+                                <h5> number of users </h5>
+                                <p class="data-group"> {{activeGroup?.users?.length}} </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="container-tableListUser">
+            <table class="table table-bordered">
+                  <thead class="thead-dark">
+                      <tr>
+                        <th scope="col" class="col-2">#</th>
+                        <th scope="col" class="col-1">Firstname</th>
+                        <th scope="col" class="col-7">Lastname</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let user of activeGroup.users">
+                          <td> {{user?.id}} </td>
+                          <td> {{user?.firstname}} </td>
+                          <td> {{user?.lastname}} </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+</div>

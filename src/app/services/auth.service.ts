@@ -5,7 +5,7 @@ import { ApiService } from './api.service';
   providedIn: 'root'
 })
 export class AuthService {
-    public isLogged:boolean;
+
     // contentType:string;
     // accessControlAllowOrigin:string;
     constructor(private apiService : ApiService) { };
@@ -27,18 +27,20 @@ export class AuthService {
     * Authentification
     **/
     login( datas ) {
+        var res = <any>{};
         return new Promise(
             (resolve, reject) => {
                 this.apiService.post("", datas)
                   .then(
                       (data) => {
-                          console.log(data);
-                          this.isLogged = true;
+                          res = data;
+                          sessionStorage.setItem('isLogged', "1");
+                          sessionStorage.setItem('token', res.token);
                           resolve(data);
                       },
                       (error) => {
                           console.log(error);
-                          this.isLogged = false;
+                          sessionStorage.setItem('isLogged', "0");
                           reject(error);
                       }
                   )
@@ -77,8 +79,8 @@ export class AuthService {
     // }
 
     logout() {
-      localStorage.setItem('isLogged', "0");
-      localStorage.setItem('token', '');
+      sessionStorage.setItem('isLogged', "0");
+      sessionStorage.setItem('token', '');
     }
 
     /**
@@ -89,12 +91,12 @@ export class AuthService {
             (resolve, reject) => {
                 this.apiService.get("").then(
                     (data) => {
-                        this.isLogged = true;
-                        resolve();
+                        sessionStorage.setItem('isLogged', "1");
+                        resolve(data);
                     },
                     (error) => {
-                        this.isLogged = false;
-                        reject();
+                        sessionStorage.setItem('isLogged', "0");
+                        reject(error);
                     }
                 )
             }

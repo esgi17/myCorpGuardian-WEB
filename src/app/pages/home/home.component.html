@@ -1,14 +1,11 @@
 <div id="container-home" class="container-fluid">
-      <div class="d-flex justify-content-around">
-
-          <div class="col">
-              <!-- <app-list-users class="col"></app-list-users> -->
+      <div id="content-home" >
+          <div class="col-12" id="section-events">
+              <app-list-events class="col-12"></app-list-events>
           </div>
-          <div class="col">
-              <!-- <div class="row">
-                  <app-list-events class="col-12"></app-list-events>
-                  <app-overview-camera class="col-12"></app-overview-camera>
-              </div> -->
+          <div class="col-12" class="d-flex justify-content-around">
+              <app-list-users (activeUser)="loadActiveUser($event)" class="col"></app-list-users>
+              <app-list-devices class="col"></app-list-devices>
           </div>
       </div>
 </div>

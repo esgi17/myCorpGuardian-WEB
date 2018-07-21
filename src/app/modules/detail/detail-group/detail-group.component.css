@@ -1,0 +1,31 @@
+#container-infoGroup {
+    box-shadow: 8px 8px 8px -13px #000000, -8px -8px 8px -13px #000000;
+    height : 48vh;
+    padding : 0;
+}
+
+#content-infoGroup {
+    height : 8vh;
+    background-color: lightblue;
+}
+
+#img-group-container {
+    height : 7vh;
+    margin : 5px;
+    padding : 0;
+}
+
+#img-group-container img {
+    height: 100%;
+}
+
+#detail-group {
+  text-align: center;
+}
+
+.detail-group-content h5 {
+    font-size : 12px;
+}
+.detail-group-content p {
+    font-size : 18px;
+}

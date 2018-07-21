@@ -1,0 +1,23 @@
+<div id="container-listGroups" class="container container-list">
+    <h2> List of groups </h2>
+    <table class="table">
+          <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Number of Users</th>
+              </tr>
+          </thead>
+          <tbody *ngIf="groupExist()">
+              <tr  *ngFor="let group of groups" (click)="selectActiveGroup(group)">
+                  <td> {{group.id}} </td>
+                  <td> {{group.name}} </td>
+                  <td> {{group.users.length}} </td>
+              </tr>
+          </tbody>
+
+      </table>
+      <div id="notFounded" *ngIf="!groupExist()">
+          <p >No groups founded...</p>
+      </div>
+</div>

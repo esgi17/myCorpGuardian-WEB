@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
 import { AuthService } from './services/auth.service';
 
@@ -7,33 +7,30 @@ import { AuthService } from './services/auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
     title = 'app';
 
     constructor( private authService: AuthService, private router: Router) {
-        this.authService.checkLogin();
-        if( this.authService.isLogged )
-            this.router.navigate(['/home']);
-        else
-            this.router.navigate(['/login']);
-
-        //console.log(this.authService.checkLogin())
-        //this.authService.checkLogin();
-        //this.isLogged = sessionStorage.getItem('logged')
-        //console.log(this.isLogged)
-    }
-
-    get checkLogin() : boolean {
-        var logged = false;
         this.authService.checkLogin()
             .then(
                 (data) => {
-                    logged = true;
+                    this.router.navigate(['/home']);
                 },
                 (error) => {
-                    console.log("notLogged");
+                    this.router.navigate(['/login']);
                 }
-            );
+            )
+    }
+
+    isLogged() {
+        if( sessionStorage.getItem('isLogged') == "1") {
+            return true;
+        }
+        return false;
+    }
+
+    ngOnInit() {
+
     }
 
 }

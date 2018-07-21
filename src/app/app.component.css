@@ -5,6 +5,8 @@ body {
 
 #content {
     width : 95%;
-    margin-left : 75px;
+    margin-left : 100px;
+    height : 100vh ;
     padding : 0;
+    padding-top: 10px;
 }

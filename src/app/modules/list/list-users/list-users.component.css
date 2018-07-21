@@ -1,0 +1,15 @@
+#container-listUsers {
+  box-shadow: 8px 8px 8px -13px #000000, -8px -8px 8px -13px #000000;
+  max-height : 100vh;
+  min-height: 400px;
+  padding : 15px;
+}
+
+
+.thead-dark tr>th {
+   color : #4ba5e0;
+}
+
+#notFounded {
+    text-align: center;
+}

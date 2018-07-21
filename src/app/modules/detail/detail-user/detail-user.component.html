@@ -1,0 +1,53 @@
+<div id="container-infoUser" class="container">
+        <div id="content-infoUser" class="d-flex col">
+            <div class="col-1">
+                <div id="img-user-container" class="container">
+                    <img alt="Image Utilisateur" src="../../../assets/images/user_L.png">
+                </div>
+            </div>
+            <div class="col">
+                <div id="detail-user" class="container">
+                  <div class="col-12">
+                        <div class="d-flex col">
+                            <div class="col detail-user-content">
+                                <h5> Firstname </h5>
+                                <p class="data-user"> {{activeUser?.firstname}} </p>
+                            </div>
+                            <div class="col detail-user-content">
+                                <h5> Lastname </h5>
+                                <p class="data-user"> {{activeUser?.lastname}} </p>
+                            </div>
+                            <div class="col detail-user-content">
+                                <h5> Job </h5>
+                                <p class="data-user"> {{activeUser?.job}} </p>
+                            </div>
+                              <div class="col detail-user-content">
+                                  <h5> Group </h5>
+                                  <p class="data-user"> {{activeUser?.group?.name}} </p>
+                              </div>
+                          </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+        <div id="container-tableListEvents">
+            <table class="table table-bordered">
+                  <thead class="thead-dark">
+                      <tr>
+                        <th scope="col" class="col-2">Date : Hour</th>
+                        <th scope="col" class="col-1">Title</th>
+                        <th scope="col" class="col-7">Description</th>
+                        <th scope="col" class="col-2">Device Id</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let event of activeUser.event">
+                          <td> {{event?.date}} </td>
+                          <td> {{event?.title}} </td>
+                          <td> {{event?.data}} </td>
+                          <td> {{event?.device_id}} </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+</div>

@@ -1,6 +1,7 @@
 #container-home {
-    /* margin : 5px; */
-    margin : 5px;
-    padding : 10px;
-    height : 90vh
+    height : 100vh;
+}
+
+#section-events {
+    max-height : 50vh;
 }

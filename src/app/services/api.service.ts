@@ -13,18 +13,18 @@ export class ApiService {
     }
 
     getToken() {
-        return this.token;
+        return sessionStorage.getItem('token');
     }
 
     setToken(token) {
-        this.token = token;
+        sessionStorage.setItem('token', token);
     }
 
     getHeaders() {
         return this.headers;
     }
 
-    setHeaders():Object {
+    setHeaders() {
         this.headers = {
             'Authorization' : this.getToken() || '',
             'Access-Control-Allow-Origin': '*'
@@ -37,18 +37,14 @@ export class ApiService {
                 var options = {
                     headers : this.getHeaders()
                 }
-                console.log(options);
-                console.log(this.api + route);
                 this.httpClient.get(this.api + route, options).subscribe(
                     (data) => {
-                        console.log("***** Debug => (api.service) ****** ");
                         console.log(data);
-                        console.log("***** Fin debug => (api.service) ******");
                         resolve(data);
                     },
                     (error) => {
-                        console.log(error);
                         reject(error);
+                        console.log(error);
                     }
                 )
             }
@@ -67,6 +63,7 @@ export class ApiService {
                         resolve(data);
                     },
                     (error) => {
+                        console.log(error);
                         reject(error);
                     }
                 )

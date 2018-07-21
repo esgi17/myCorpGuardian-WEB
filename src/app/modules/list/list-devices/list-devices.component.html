@@ -1,0 +1,23 @@
+<div id="container-listDevices" class="container-list container-fluid">
+    <h2> List of devices </h2>
+    <div id="container-tableListDevices">
+        <table class="table table-bordered">
+              <thead class="thead-dark">
+                  <tr>
+                    <th scope="col" class="col-2"> # </th>
+                    <th scope="col" class="col-1"> Name </th>
+                    <th scope="col" class="col-7"> Ref. </th>
+                    <th scope="col" class="col-2"> Type </th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let device of devices">
+                      <td> {{device.id}} </td>
+                      <td> {{device.name}} </td>
+                      <td> {{device.ref}} </td>
+                      <td> {{device.deviceType.name}} </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+</div>
