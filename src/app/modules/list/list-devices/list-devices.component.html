@@ -11,7 +11,7 @@
                   </tr>
               </thead>
               <tbody>
-                  <tr *ngFor="let device of devices">
+                  <tr *ngFor="let device of devices" (click)="selectActiveDevice(device)" [ngClass]="isSelected(device.id) ? 'active-tr' : ''">
                       <td> {{device.id}} </td>
                       <td> {{device.name}} </td>
                       <td> {{device.ref}} </td>

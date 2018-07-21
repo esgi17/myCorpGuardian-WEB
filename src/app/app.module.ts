@@ -23,6 +23,7 @@ import { UserComponent } from './pages/user/user.component';
 import { DeviceComponent } from './pages/device/device.component';
 import { CameraComponent } from './pages/camera/camera.component';
 import { EventComponent } from './pages/event/event.component';
+import { ListDoorsComponent } from './modules/list/list-doors/list-doors.component';
 
 
 const appRoutes : Routes = [
@@ -55,7 +56,8 @@ const appRoutes : Routes = [
     UserComponent,
     DeviceComponent,
     CameraComponent,
-    EventComponent
+    EventComponent,
+    ListDoorsComponent
   ],
   imports: [
     BrowserModule,

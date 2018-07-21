@@ -8,3 +8,15 @@
 .thead-dark tr>th {
    color : #4ba5e0 ;
 }
+
+.table tr {
+    cursor : pointer;
+}
+
+.table tr:hover {
+    background-color: lightgray;
+}
+
+.active-tr {
+  background-color: lightgray
+}

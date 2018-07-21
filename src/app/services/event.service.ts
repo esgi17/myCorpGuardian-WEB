@@ -39,4 +39,20 @@ export class EventService {
             }
         )
     }
+
+    getEventsFromDevice(id) {
+        return new Promise(
+            (resolve, reject) => {
+                this.apiService.get("event?id_device=" + id)
+                    .then(
+                        (data) => {
+                            resolve(data);
+                        },
+                        (error) => {
+                            reject(error);
+                        }
+                    )
+            }
+        )
+    }
 }
