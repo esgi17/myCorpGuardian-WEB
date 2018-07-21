@@ -1,10 +1,10 @@
 #container-users {
     margin : 5px;
     padding : 10px;
-    height : 90vh;
+    max-height : 60vh;
 }
 
 #content-detail {
     margin: auto;
-    height : 45vh
+    height : 45vh;
 }

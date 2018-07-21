@@ -42,7 +42,7 @@ DeviceTypeController.update = function( id, name ) {
 /**
 *  Récupération des élements en base
 **/
-DeviceTypeController.getAll = function (id) {
+DeviceTypeController.getAll = function (id, name) {
     const options = {};
     const where = {};
 
@@ -50,6 +50,12 @@ DeviceTypeController.getAll = function (id) {
         where.id = {
             [Op.eq] : `${id}`
         };
+    }
+
+    if( name !== undefined ) {
+        where.name = {
+            [Op.eq] : `${name}`
+        }
     }
     options.where = where;
     return DeviceType.findAll(options);

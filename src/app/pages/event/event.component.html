@@ -1,9 +1,12 @@
-<div id="container-users" class="container-fluid">
-        <div class="col-12">
-            <app-list-events class="col"></app-list-events>
-        </div>
-        <div class="col-12 d-flex justify-content-around">
-            <app-list-devices class="col" (activeDoor)="loadActiveDoor($event)"></app-list-devices>
-            <app-detail-device class="col"> </app-detail-device>
-        </div>
+<div id="container-events" class="container-fluid">
+      <div class="d-flex justify-content-around">
+          <div class="col">
+              <app-list-events class="col"></app-list-events>
+          </div>
+          <div class="col">
+              <app-list-devices class="col" (activeDoor)="loadActiveDoor($event)"></app-list-devices>
+              <app-detail-device class="col"> </app-detail-device>
+          </div>
+      </div>
+
 </div>

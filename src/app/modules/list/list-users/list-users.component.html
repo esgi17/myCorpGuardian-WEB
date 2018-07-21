@@ -1,24 +1,26 @@
-<div id="container-listUsers" class="container container-list">
+<div id="container-listUsers" class="container container-list" >
     <h2> Liste des utilisateurs</h2>
-    <table class="table">
-          <thead class="thead-dark">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Group</th>
-              </tr>
-          </thead>
-          <tbody *ngIf="usersExist()">
-              <tr  *ngFor="let user of users" (click)="selectActiveUser(user)" [ngClass]="isSelected(user.id) && lastSelected == 'user' ? 'active-tr' : ''">
-                  <td> {{user.id}} </td>
-                  <td> {{user.firstname}} </td>
-                  <td> {{user.lastname}} </td>
-                  <td> {{user.group.name}} </td>
-              </tr>
-          </tbody>
+    <div id="container-tableListUsers" [ngClass]="getStyle()">
+        <table id="table-listUsers" class="table">
+              <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Group</th>
+                  </tr>
+              </thead>
+              <tbody *ngIf="usersExist()">
+                  <tr  *ngFor="let user of users" (click)="selectActiveUser(user)" [ngClass]="isSelected(user.id) && lastSelected == 'user' ? 'active-tr' : ''">
+                      <td> {{user.id}} </td>
+                      <td> {{user.firstname}} </td>
+                      <td> {{user.lastname}} </td>
+                      <td> {{user.group.name}} </td>
+                  </tr>
+              </tbody>
 
-      </table>
+          </table>
+      </div>
       <div id="notFounded" *ngIf="!usersExist()">
           <p >No users founded...</p>
       </div>

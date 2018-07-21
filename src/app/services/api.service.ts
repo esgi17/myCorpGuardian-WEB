@@ -37,14 +37,15 @@ export class ApiService {
                 var options = {
                     headers : this.getHeaders()
                 }
+                //console.log(options);
                 this.httpClient.get(this.api + route, options).subscribe(
                     (data) => {
-                        console.log(data);
+                  //      console.log(data);
                         resolve(data);
                     },
                     (error) => {
-                        reject(error);
                         console.log(error);
+                        reject(error);
                     }
                 )
             }

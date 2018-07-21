@@ -33,7 +33,7 @@ DeviceController.delete = function(id) {
 /**
 *  Récupération des élements en base
 **/
-DeviceController.getAll = function (id) {
+DeviceController.getAll = function (id, device_type_id) {
     const options = {
       include: [{
         model: ModelIndex.DeviceType,
@@ -47,6 +47,13 @@ DeviceController.getAll = function (id) {
             [Op.eq] : `${id}`
         };
     }
+
+    if( device_type_id !== undefined ) {
+         where.device_type_id = {
+            [Op.eq] : `${device_type_id}`
+         }
+    }
+
     options.where = where;
     return Device.findAll(options);
 };

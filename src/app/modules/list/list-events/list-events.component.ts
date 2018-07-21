@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { EventService } from '../../../services/event.service';
 
 @Component({
@@ -9,10 +10,17 @@ import { EventService } from '../../../services/event.service';
 export class ListEventsComponent implements OnInit {
   events: Array<Object>;
 
-  constructor( private eventServices: EventService) { }
+  constructor( private eventServices: EventService, private router : Router) { }
 
   getEvents() {
       return this.events;
+  }
+
+  isHome() {
+      if( this.router.url == '/home') {
+          return true;
+      }
+      return false;
   }
 
   getAll() {

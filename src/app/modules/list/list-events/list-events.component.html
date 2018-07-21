@@ -1,6 +1,6 @@
 <div id="container-listEvents" class="container-list container-fluid">
     <h2> Lasts events </h2>
-    <div id="container-tableListEvents">
+    <div id="container-tableListEvents" [ngClass]="isHome() ? 'half_height' : 'full_height'">
         <table class="table table-bordered">
               <thead class="thead-dark">
                   <tr>

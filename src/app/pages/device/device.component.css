@@ -1,0 +1,12 @@
+#container-devices {
+    margin : 5px;
+    padding : 10px;
+}
+
+#content-detail {
+    margin: auto;
+}
+
+#section-devices {
+    max-height : 50vh;
+}

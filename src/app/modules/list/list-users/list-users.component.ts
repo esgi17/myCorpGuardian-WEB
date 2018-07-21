@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, Input, EventEmitter  } from '@angular/core';
+import { Router } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { EventService } from '../../../services/event.service';
 
@@ -14,7 +15,27 @@ export class ListUsersComponent {
 
     @Input() lastSelected: string;
     @Output() activeUser = new EventEmitter<Object>();
-    constructor( private userService : UserService, private eventService: EventService ) {
+    constructor( private userService : UserService, private eventService: EventService, private router : Router ) {
+    }
+
+    getStyle() {
+        switch( this.router.url ) {
+            case '/home' :
+                return 'full_height'
+            case '/user' :
+                return 'half_height'
+            case '/event' :
+                break;
+            case '/device' :
+                break;
+        }
+    }
+
+    isHome() {
+        if( this.router.url == '/home' ) {
+            return true;
+        }
+        return false;
     }
 
     isSelected(id) {

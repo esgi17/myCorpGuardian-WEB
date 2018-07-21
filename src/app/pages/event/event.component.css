@@ -1,0 +1,12 @@
+#container-events {
+    margin : 5px;
+    padding : 10px;
+}
+
+#content-detail {
+    margin: auto;
+}
+
+#section-events {
+    max-height : 50vh;
+}

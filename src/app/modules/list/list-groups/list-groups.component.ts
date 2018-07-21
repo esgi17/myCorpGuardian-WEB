@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, Input, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router'
 import { GroupService } from '../../../services/group.service';
 
 @Component({
@@ -13,7 +14,20 @@ export class ListGroupsComponent implements OnInit {
     @Input() lastSelected: string;
     @Output() activeGroup = new EventEmitter<Object>();
 
-    constructor( private groupService: GroupService) { }
+    constructor( private groupService: GroupService, private router : Router) { }
+
+    getStyle() {
+        switch( this.router.url ) {
+            case '/home' :
+                return ''
+            case '/user' :
+                return 'half_height'
+            case '/event' :
+                break;
+            case '/device' :
+                break;
+        }
+    }
 
     isSelected(id) {
         var res = <any>{};

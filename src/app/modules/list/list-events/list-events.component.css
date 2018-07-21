@@ -1,10 +1,34 @@
 #container-listEvents {
   box-shadow: 8px 8px 8px -13px #000000, -8px -8px 8px -13px #000000;
-  min-height: 400px;
-  padding : 15px;
+  padding-bottom : 20px;
 }
 
+.full_height {
+    height : 80vh;
+    overflow-y: auto;
+}
+
+.half_height {
+    height : 40vh;
+    overflow-y: auto;
+}
 
 .thead-dark tr>th {
-   color : #4ba5e0 ;
+   color : #4ba5e0;
+}
+
+#notFounded {
+    text-align: center;
+}
+
+.table tr {
+    cursor : pointer;
+}
+
+.table tr:hover {
+    background-color: lightgray;
+}
+
+.active-tr {
+  background-color: lightgray
 }
