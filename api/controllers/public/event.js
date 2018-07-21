@@ -9,12 +9,21 @@ const EventController = function() { };
 /**
 *  Creation d'un Event en base
 **/
-EventController.add = function( date, data, device_id ) {
-    return Event.create({
-        date: date,
-        data: data,
-        device_id: device_id
-    });
+EventController.add = function( title, data, device_id, pass_id ) {
+    const options = {};
+    options.date = new Date();
+    options.title = title;
+    if (data !== undefined){
+      options.data = data;
+    }
+    if (device_id !== undefined){
+      options.device_id = device_id;
+    }
+    if (pass_id !== undefined){
+      options.pass_id = pass_id;
+    }
+
+    return Event.create(options);
 };
 
 /**
@@ -46,7 +55,7 @@ EventController.update = function( id, date, data, device_id ) {
 /**
 *  Récupération des élements en base
 **/
-EventController.getAll = function (id) {
+EventController.getAll = function (idEvent, idPass, idDevice) {
     const options = {
       include: [{
         model: ModelIndex.Device,
@@ -55,10 +64,22 @@ EventController.getAll = function (id) {
     };
     const where = {};
 
-    if( id !== undefined ) {
+    if( idEvent !== undefined ) {
         where.id = {
-            [Op.eq] : `${id}`
+            [Op.eq] : `${idEvent}`
         };
+    }
+
+    if( idPass !== undefined ) {
+        where.pass_id = {
+            [Op.eq] : `${idPass}`
+        }
+    }
+
+    if( idDevice !== undefined ) {
+        where.device_id = {
+            [Op.eq] : `${idDevice}`
+        }
     }
     options.where = where;
     return Event.findAll(options);
