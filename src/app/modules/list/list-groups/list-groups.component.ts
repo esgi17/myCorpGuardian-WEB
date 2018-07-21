@@ -16,7 +16,9 @@ export class ListGroupsComponent implements OnInit {
     constructor( private groupService: GroupService) { }
 
     isSelected(id) {
-        if( this.selectedGroup !== undefined && this.selectedGroup.id == id ) {
+        var res = <any>{};
+        res = this.selectedGroup;
+        if( res !== undefined && res.id == id ) {
             return true;
         }
         return false;

@@ -18,7 +18,9 @@ export class ListUsersComponent {
     }
 
     isSelected(id) {
-        if( this.selectedUser !== undefined && this.selectedUser.id == id ) {
+        var res = <any>{};
+        res = this.selectedUser;
+        if( res !== undefined && res.id == id ) {
             return true;
         }
         return false;
@@ -58,11 +60,13 @@ export class ListUsersComponent {
                         (result) => {
                             console.log(result);
                             var res = <any>{};
-                            var pass_id = result.datas[0].id;
-
+                            res = result;
+                            console.log(res);
+                            var pass_id = res.datas[0].id;
                             this.eventService.getEventsFromPass(pass_id)
                                 .then(
                                     (result) => {
+                                        var res = <any>{};
                                         res = result;
                                         var events = <Array<Object>>Object.keys(res.datas).map( key => res.datas[key]);
                                         resolve(events);
@@ -74,7 +78,7 @@ export class ListUsersComponent {
                                 )
                                 .catch( (err) => {
                                       console.log(err);
-                                      reject(error);
+                                      reject(err);
                                 });
                         },
                         (error) => {
