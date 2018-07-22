@@ -13,23 +13,7 @@ export class UserComponent implements OnInit {
     activeGroup: Object;
     lastSelected: String;
 
-    /*** Récupération des composants ***/
-    // List Users
-    @ViewChild(ListUsersComponent)
-    private listUsersComponent: ListUsersComponent;
-
-    @ViewChild(ListGroupsComponent)
-    private listGroupsComponent: ListGroupsComponent;
-
-    @ViewChild(DetailUserComponent)
-    private detailUserComponent: DetailUserComponent;
-
-    // List Events
-    // @ViewChild(ListEventsComponent)
-    // private listEventsComponent: ListEventsComponent;
-
     constructor() { }
-
 
     loadActiveUser($event) {
         this.activeUser = $event;

@@ -24,6 +24,7 @@ import { DeviceComponent } from './pages/device/device.component';
 import { CameraComponent } from './pages/camera/camera.component';
 import { EventComponent } from './pages/event/event.component';
 import { ListDoorsComponent } from './modules/list/list-doors/list-doors.component';
+import { DetailDeviceEventsComponent } from './modules/detail/detail-device-events/detail-device-events.component';
 
 
 const appRoutes : Routes = [
@@ -57,7 +58,8 @@ const appRoutes : Routes = [
     DeviceComponent,
     CameraComponent,
     EventComponent,
-    ListDoorsComponent
+    ListDoorsComponent,
+    DetailDeviceEventsComponent
   ],
   imports: [
     BrowserModule,

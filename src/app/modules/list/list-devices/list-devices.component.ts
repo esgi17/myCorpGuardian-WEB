@@ -182,7 +182,7 @@ export class ListDevicesComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit() {
-        if( this.router.url == '/device') {
+        if( this.router.url == '/event') {
             this.devices = [];
             this.getAllDoors()
                 .then(

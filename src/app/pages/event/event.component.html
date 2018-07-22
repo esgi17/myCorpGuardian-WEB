@@ -4,8 +4,8 @@
               <app-list-events class="col"></app-list-events>
           </div>
           <div class="col">
-              <app-list-devices class="col" (activeDoor)="loadActiveDoor($event)"></app-list-devices>
-              <app-detail-device class="col"> </app-detail-device>
+              <app-list-devices class="col" (activeDevice)="loadActiveDevice($event)"></app-list-devices>
+              <app-detail-device-events class="col" *ngIf="isActiveDevice()" [activeDevice]="activeDevice"></app-detail-device-events>
           </div>
       </div>
 

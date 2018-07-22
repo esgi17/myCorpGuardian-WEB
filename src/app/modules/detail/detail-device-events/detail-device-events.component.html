@@ -1,0 +1,48 @@
+<div id="container-infoDeviceEvents" class="container">
+    <div id="content-infoDevice" class="d-flex col">*
+        <div class="col">
+            <div id="detail-device" class="container">
+                <div class="col-12">
+                    <div class="d-flex col">
+                        <div class="col detail-device-content">
+                            <h5> # </h5>
+                            <p class="data-user"> {{activeDevice?.id}} </p>
+                        </div>
+                        <div class="col detail-device-content">
+                            <h5> name </h5>
+                            <p class="data-user"> {{activeDevice?.name}} </p>
+                        </div>
+                        <div class="col detail-device-content">
+                            <h5> ref. </h5>
+                            <p class="data-user"> {{activeDevice?.ref}} </p>
+                        </div>
+                        <div class="col detail-device-content">
+                            <h5> Number of events </h5>
+                            <p class="data-user"> {{activeDevice?.events?.length}} </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="container-tableListEvents">
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                  <th scope="col" class="col-2">Date : Hour</th>
+                  <th scope="col" class="col-1">Title</th>
+                  <th scope="col" class="col-7">Description</th>
+                  <th scope="col" class="col-2">Device Id</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let event of activeDevice.event">
+                    <td> {{event?.date}} </td>
+                    <td> {{event?.title}} </td>
+                    <td> {{event?.data}} </td>
+                    <td> {{event?.device_id}} </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
