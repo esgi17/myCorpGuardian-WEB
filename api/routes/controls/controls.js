@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const controllers = require('../../controllers');
-const publicRoute = require('../public');
+//const publicRoute = require('../public');
 const publicConfig = require('../public/config');
 const ControlsController = controllers.ControlsController;
 const GroupController = require(publicConfig.controllers.group_path);
@@ -19,7 +19,6 @@ const CameraController = require(publicConfig.controllers.camera_path);
 const controlsRouter = express.Router();
 controlsRouter.use(bodyParser.json());
 
-
 controlsRouter.use(function ( req, res, next ){
   console.log("Insert event");
   // Inserer un event
@@ -27,7 +26,11 @@ controlsRouter.use(function ( req, res, next ){
   next();
 },
 function(req,res, next) {
-  publicRoute.attach(controlsRouter);
+
+  console.log("yo3");
+  //publicRoute.attach(controlsRouter);
+
+  console.log("yo4");
   next();
 });
 

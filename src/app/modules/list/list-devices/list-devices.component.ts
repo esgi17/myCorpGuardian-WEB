@@ -14,6 +14,7 @@ export class ListDevicesComponent implements OnInit, AfterViewInit {
     captors : Array<Object>;
     selectedDevice: {};
     nbDevices = 0;
+
     constructor( private router : Router, private deviceService : DeviceService, private eventService : EventService) { }
 
     @Output() activeDevice = new EventEmitter<Object>();
@@ -65,10 +66,10 @@ export class ListDevicesComponent implements OnInit, AfterViewInit {
                     .then(
                         (result) => {
                             console.log(result);
-                          var res = <any>{};
-                          res = result;
-                          var events = <Array<Object>>Object.keys(res.datas).map( key => res.datas[key]);
-                          resolve(events);
+                            var res = <any>{};
+                            res = result;
+                            var events = <Array<Object>>Object.keys(res.datas).map( key => res.datas[key]);
+                            resolve(events);
                         },
                         (error) => {
                             reject(error)

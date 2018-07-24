@@ -17,6 +17,13 @@ export class HeaderComponent implements OnInit {
       this.router.navigate(['/login']);
   }
 
+  isAdmin() {
+      if (sessionStorage.getItem('isAdmin') == "1") {
+          return true;
+      }
+      return false;
+  }
+
   ngOnInit() {
   }
 

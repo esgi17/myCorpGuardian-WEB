@@ -41,27 +41,21 @@ export class LoginComponent implements OnInit {
         }
         this.authService.login(datas).then(
             (result) => {
-                this.router.navigate(['/home']);
+                console.log(result);
+                var res = <any>{};
+                res = result;
+                if( res.isAdmin == 1 ) {
+                    sessionStorage.setItem("isAdmin", "1");
+                    this.router.navigate(['/admin']);
+                } else {
+                    sessionStorage.setItem("isAdmin", "0");
+                    this.router.navigate(['/home']);
+                }
             },
             (error) => {
                 console.log("nope");
             }
         )
-
-
-          // console.log(this.loginForm.get('login').value);
-          // this.authService.login(datas).then(
-          //     (result) => {
-          //         res = result;
-          //         if( res !== undefined ) {
-          //             localStorage.setItem('token', res.token);
-          //
-          //         }
-          //     },
-          //     (error) => {
-          //         console.log(error);
-          //     }
-          // )
     }
 
     ngOnInit() {

@@ -7,30 +7,52 @@ const Op = ModelIndex.sequelize.Op;
 
 const AdminController = function() { };
 
-AdminController.add = function(login, password) {
+AdminController.isAdmin;
+
+AdminController.add = function(login, password, isAdmin, corp_id) {
+    console.log(password);
     return Admin.create({
         login: login,
-        password: passwordHash.generate(password)
+        password: passwordHash.generate(password),
+        isAdmin : isAdmin,
+        corp_id : corp_id
     });
 }
 
 AdminController.exist = function (login) {
-    return Admin.find({
-        login : login
-    });
+    const options = {
+      include : [{
+        model: ModelIndex.Corp,
+        as : 'corp'
+      }]
+    }
+    const where = {}
+
+    if( login !== undefined ) {
+        where.login = {
+            [Op.eq] : `${login}`
+        }
+    }
+    options.where = where;
+    return Admin.find(options);
 }
 
 AdminController.verifyPassword = function (pwd, pwd1) {
+    console.log(pwd);
+    console.log(pwd1);
     if( passwordHash.verify(pwd, pwd1) ) {
         return true;
     }
     return false;
 }
 
-AdminController.checkToken = function (token) {
+
+AdminController.checkToken = function (token, secret) {
     if (token) {
         try {
-            var decoded = jwt.verify(token, config.secret);
+            console.log(secret);
+            var decoded = jwt.verify(token, secret);
+            console.log(decoded);
             return true;
         } catch (err) {
             console.error(err);

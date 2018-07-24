@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common'
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgbModule, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -25,6 +26,10 @@ import { CameraComponent } from './pages/camera/camera.component';
 import { EventComponent } from './pages/event/event.component';
 import { ListDoorsComponent } from './modules/list/list-doors/list-doors.component';
 import { DetailDeviceEventsComponent } from './modules/detail/detail-device-events/detail-device-events.component';
+import { BackendComponent } from './pages/backend/backend.component';
+import { ListCorpComponent } from './modules/list/list-corp/list-corp.component';
+import { FormCorpComponent } from './modules/form-corp/form-corp.component';
+import { AddUserComponent } from './modules/modals/add-user/add-user.component';
 
 
 const appRoutes : Routes = [
@@ -34,6 +39,7 @@ const appRoutes : Routes = [
     { path: 'device', component: DeviceComponent },
     { path: 'camera', component: CameraComponent },
     { path: 'login', component: LoginComponent},
+    { path: 'admin', component: BackendComponent},
     { path: '', component: HomeComponent}
 ];
 
@@ -59,7 +65,11 @@ const appRoutes : Routes = [
     CameraComponent,
     EventComponent,
     ListDoorsComponent,
-    DetailDeviceEventsComponent
+    DetailDeviceEventsComponent,
+    BackendComponent,
+    ListCorpComponent,
+    FormCorpComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +77,8 @@ const appRoutes : Routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    NgbModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

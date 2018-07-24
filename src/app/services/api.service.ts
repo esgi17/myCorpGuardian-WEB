@@ -71,4 +71,46 @@ export class ApiService {
             }
         )
     }
+
+    put( route: string, datas: Object) {
+        return new Promise(
+            (resolve, reject) => {
+                console.log(route);
+                var options = {
+                    headers : this.getHeaders()
+                }
+                this.httpClient.put(this.api + route, datas, options).subscribe(
+                    (data) => {
+                        console.log(data);
+                        resolve(data);
+                    },
+                    (error) => {
+                        console.log(error);
+                        reject(error)
+                    }
+
+                )
+            }
+        )
+    }
+
+    delete( route : string ) {
+        return new Promise(
+            (resolve, reject) => {
+                var options = {
+                    headers : this.getHeaders()
+                }
+                this.httpClient.delete(this.api + route, options)
+                    .subscribe(
+                        (data) => {
+                            resolve(data);
+                        },
+                        (error) => {
+                            console.log(error);
+                            reject(error);
+                        }
+                    )
+            }
+        )
+    }
 }

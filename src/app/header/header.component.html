@@ -1,5 +1,5 @@
 <div id="sidebar-wrapper" class="col">
-    <ul class="sidebar-nav">
+    <ul class="sidebar-nav" *ngIf="!isAdmin()">
         <li>
             <a id="logo" class=""><img alt="home icon" src="assets/images/logo.png"></a>
         </li>
@@ -14,6 +14,17 @@
         </li>
         <li>
             <a id="events" class="nav-link" routerLinkActive="active" routerLink="event" href="#"><img alt="events icon" src="assets/images/event.png"></a>
+        </li>
+        <li>
+            <a id="logout" class="nav-link" (click)="logout()"> <img alt="logout icon" src="assets/images/logout.png"></a>
+        </li>
+    </ul>
+    <ul class="sidebar-nav" *ngIf="isAdmin()">
+        <li>
+            <a id="logo" class=""><img alt="home icon" src="assets/images/logo.png"></a>
+        </li>
+        <li>
+            <a id="home-admin" class="nav-link" routerLinkActive="active" routerLink="admin" href="#"><img alt="home icon" src="assets/images/home.png"></a>
         </li>
         <li>
             <a id="logout" class="nav-link" (click)="logout()"> <img alt="logout icon" src="assets/images/logout.png"></a>

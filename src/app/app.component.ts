@@ -11,10 +11,17 @@ export class AppComponent implements OnInit {
     title = 'app';
 
     constructor( private authService: AuthService, private router: Router) {
+
         this.authService.checkLogin()
             .then(
                 (data) => {
-                    this.router.navigate(['/home']);
+                    if( sessionStorage.getItem('isAdmin') == "1" ) {
+
+                        this.router.navigate(['/admin']);
+                    } else {
+                        console.log(sessionStorage.getItem('isAdmin'));
+                          this.router.navigate(['/home']);
+                    }
                 },
                 (error) => {
                     this.router.navigate(['/login']);
@@ -23,14 +30,18 @@ export class AppComponent implements OnInit {
     }
 
     isLogged() {
-        if( sessionStorage.getItem('isLogged') == "1") {
-            return true;
+        console.log(sessionStorage.getItem('isLogged'));
+        console.log(sessionStorage.getItem('isAdmin'))
+        if( sessionStorage.getItem('isLogged') != "1" ) {
+            return false;
         }
-        return false;
+        return true;;
     }
 
     ngOnInit() {
-
+        if( sessionStorage.getItem('isAdmin') == "1" && this.router.url != '/admin') {
+            this.router.navigate(['/admin'])
+        }
     }
 
 }

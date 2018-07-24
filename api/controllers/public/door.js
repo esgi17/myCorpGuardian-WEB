@@ -1,8 +1,7 @@
 const publicConfig = require('./config');
-const ModelIndex = require(publicConfig.models_path);
-const Door = ModelIndex.Door;
-
-const Op = ModelIndex.sequelize.Op;
+const login = require('../../routes/authenticate');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 const DoorController = function() { };
 
@@ -19,7 +18,7 @@ DoorController.getAll = function (id) {
           };
       }
       options.where = where;
-      return Door.findAll(options);
+      return DoorController.sequelize.Door.findAll(options);
   };
 
 
@@ -28,7 +27,7 @@ DoorController.getAll = function (id) {
 **/
 DoorController.find = function( id ) {
   if ( id != undefined ){
-    return Door.findById( id );
+    return DoorController.sequelize.Door.findById( id );
   }
 }
 
@@ -40,14 +39,14 @@ DoorController.add = function( device_id) {
     if (device_id !== undefined){
       options.device_id = device_id
     }
-    return Door.create(options);
+    return DoorController.sequelize.Door.create(options);
 };
 
 /**
 * Suppression d'un groupe
 **/
 DoorController.delete = function ( id ) {
-  return Door.destroy({
+  return DoorController.sequelize.Door.destroy({
     where: {
       id : id
     }
