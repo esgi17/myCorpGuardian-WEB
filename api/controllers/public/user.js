@@ -77,7 +77,7 @@ UserController.getAll = function (id) {
 
 UserController.disconnect = function() {
 
-      ModelIndex.close();
+//      UserController.sequelize.close();
 
 }
 

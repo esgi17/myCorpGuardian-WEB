@@ -134,7 +134,7 @@ loginRouter.use(function(req,res,next) {
     console.log(token);
     if (AdminController.checkToken(token, config.secret_user)) {
           console.log("*************1***********");
-        //  controlsRoute.attach(loginRouter);
+          controlsRoute.attach(loginRouter);
           publicRoute.attach(loginRouter);
           next();
     } else if ( AdminController.checkToken(token, config.secret_admin) ) {

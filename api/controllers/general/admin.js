@@ -10,7 +10,6 @@ const AdminController = function() { };
 AdminController.isAdmin;
 
 AdminController.add = function(login, password, isAdmin, corp_id) {
-    console.log(password);
     return Admin.create({
         login: login,
         password: passwordHash.generate(password),
@@ -38,8 +37,6 @@ AdminController.exist = function (login) {
 }
 
 AdminController.verifyPassword = function (pwd, pwd1) {
-    console.log(pwd);
-    console.log(pwd1);
     if( passwordHash.verify(pwd, pwd1) ) {
         return true;
     }
@@ -50,12 +47,9 @@ AdminController.verifyPassword = function (pwd, pwd1) {
 AdminController.checkToken = function (token, secret) {
     if (token) {
         try {
-            console.log(secret);
             var decoded = jwt.verify(token, secret);
-            console.log(decoded);
             return true;
         } catch (err) {
-            console.error(err);
             return false;
         }
     } else {
