@@ -11,6 +11,15 @@ export class DetailGroupComponent implements OnInit {
 
     constructor() { }
 
+    usersExist() {
+        var res = <any>{};
+        res = this.activeGroup
+        if( res.users !== undefined && res.users.length > 0 ) {
+            return true;
+        }
+        return false;
+    }
+
     ngOnInit() {
     }
 

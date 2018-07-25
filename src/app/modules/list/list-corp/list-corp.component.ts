@@ -20,6 +20,8 @@ export class ListCorpComponent implements OnInit {
     modifyDbPassword = false;
     closeResult: string;
 
+    @Output() editCorp = new EventEmitter<Object>();
+    @Output() createCorp = new EventEmitter<Boolean>();
     @Output() activeCorp = new EventEmitter<Object>();
     constructor( private adminService: AdminService, private modalService: NgbModal, private userService: UserService, private router : Router) { }
 
@@ -27,18 +29,22 @@ export class ListCorpComponent implements OnInit {
     getStyle() {
         switch( this.router.url ) {
             case '/admin' :
-                return 'half_height'
+                return 'full_height'
         }
     }
 
     isSelected(id) {
+        console.log("CORP ID : " + id)
         var res = <any>{};
         res = this.selectedCorp;
         if( res !== undefined && res.id == id ){
+            console.log("apapapapa");
             return true;
         }
+        console.log("zefzefz");
         return false;
     }
+
 
     selectActiveCorp(corp) {
         this.selectedCorp = corp;
@@ -225,6 +231,17 @@ export class ListCorpComponent implements OnInit {
         }
     }
 
+    createCorpModal() {
+        console.log("Create Corp");
+        this.createCorp.emit(true);
+    }
+
+    modifyCorp(corp) {
+        this.selectedCorp = corp;
+        this.editCorp.emit(corp);
+    }
+
+
     addUserCorp(corp) {
         console.log(corp)
         this.selectActiveCorp(corp)
@@ -232,8 +249,13 @@ export class ListCorpComponent implements OnInit {
 
     ngOnInit() {
         this.getAll();
+        console.log(this.modifyName)
     }
 
+    modifyNamee() {
+        console.log("yo");
+        this.modifyName=true;
+    }
 
 
 }

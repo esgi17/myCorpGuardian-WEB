@@ -4,20 +4,23 @@
         <table class="table table-bordered">
               <thead class="thead-dark">
                   <tr>
-                    <th scope="col" class="col-2">Date : Hour</th>
-                    <th scope="col" class="col-1">Title</th>
-                    <th scope="col" class="col-7">Description</th>
+                    <th scope="col" class="col-3">Date : Hour</th>
+                    <th scope="col" class="col-2">Title</th>
+                    <th scope="col" class="col-5">Description</th>
                     <th scope="col" class="col-2">Device Id</th>
                   </tr>
               </thead>
               <tbody>
                   <tr *ngFor="let event of events">
-                      <td> {{event.date}} </td>
-                      <td> {{event.title}} </td>
-                      <td> {{event.data}} </td>
-                      <td> {{event.device_id}} </td>
+                      <td class="col-3"> {{event.date | date: 'dd/MM/yy - hh:mm:ss'}} </td>
+                      <td class="col-2"> {{event.title}} </td>
+                      <td class="col-5"> {{event.data}} </td>
+                      <td class="col-2"> {{event.device_id}} </td>
                   </tr>
               </tbody>
           </table>
+          <div id="notFounded" *ngIf="!eventsExist()">
+            <p >No recent events...</p>
+          </div>
       </div>
 </div>

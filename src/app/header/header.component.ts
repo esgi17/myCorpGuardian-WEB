@@ -12,7 +12,6 @@ export class HeaderComponent implements OnInit {
   constructor(private authService: AuthService, private router : Router) { }
 
   logout() {
-      console.log("logout");
       this.authService.logout();
       this.router.navigate(['/login']);
   }

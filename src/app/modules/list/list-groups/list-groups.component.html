@@ -4,9 +4,9 @@
         <table class="table">
               <thead class="thead-dark">
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Number of Users</th>
+                    <th scope="col" class="col-1">#</th>
+                    <th scope="col" class="col">Name</th>
+                    <th scope="col" class="col">Number of Users</th>
                   </tr>
               </thead>
               <tbody *ngIf="groupExist()">
@@ -18,8 +18,8 @@
               </tbody>
 
           </table>
-      </div>
-      <div id="notFounded" *ngIf="!groupExist()">
-          <p >No groups founded...</p>
+          <div id="notFounded" *ngIf="!groupExist()">
+            <p >No groups founded...</p>
+          </div>
       </div>
 </div>

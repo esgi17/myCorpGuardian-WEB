@@ -1,5 +1,5 @@
 <div id="container-listUsers" class="container container-list" >
-    <h2> Liste des utilisateurs</h2>
+    <h2> List of users</h2>
     <div id="container-tableListUsers" [ngClass]="getStyle()">
         <table id="table-listUsers" class="table">
               <thead class="thead-dark">
@@ -20,8 +20,8 @@
               </tbody>
 
           </table>
-      </div>
-      <div id="notFounded" *ngIf="!usersExist()">
-          <p >No users founded...</p>
+          <div id="notFounded" *ngIf="!usersExist()">
+            <p >No users founded...</p>
+          </div>
       </div>
 </div>

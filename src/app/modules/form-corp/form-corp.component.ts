@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class FormCorpComponent implements OnInit {
     corpForm: FormGroup;
-    @Input() activeCorp: {};
+    @Input() createCorp: Boolean;
     constructor(private formBuilder: FormBuilder, private adminService: AdminService, private router: Router) {
         this.initForm();
     }

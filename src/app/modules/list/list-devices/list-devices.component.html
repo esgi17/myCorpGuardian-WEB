@@ -4,20 +4,23 @@
         <table class="table table-bordered">
               <thead class="thead-dark">
                   <tr>
-                    <th scope="col" class="col-2"> # </th>
-                    <th scope="col" class="col-1"> Name </th>
-                    <th scope="col" class="col-7"> Ref. </th>
-                    <th scope="col" class="col-2"> Type </th>
+                    <th scope="col" class="col-1"> # </th>
+                    <th scope="col" class="col-4"> Name </th>
+                    <th scope="col" class="col-5"> Ref. </th>
+                    <th scope="col" class="col-3"> Type </th>
                   </tr>
               </thead>
               <tbody>
                   <tr *ngFor="let device of devices" (click)="selectActiveDevice(device)" [ngClass]="isSelected(device.id) ? 'active-tr' : ''">
-                      <td> {{device.id}} </td>
-                      <td> {{device.name}} </td>
-                      <td> {{device.ref}} </td>
-                      <td> {{device.deviceType.name}} </td>
+                      <td class="col-1"> {{device.id}} </td>
+                      <td class="col-4"> {{device.name}} </td>
+                      <td class="col-5"> {{device.ref}} </td>
+                      <td class="col-3"> {{device.deviceType.name}} </td>
                   </tr>
               </tbody>
           </table>
+          <div id="notFounded" *ngIf="!devicesExist()">
+              <p>No devices registered...</p>
+          </div>
       </div>
 </div>

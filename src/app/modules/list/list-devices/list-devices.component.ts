@@ -41,6 +41,13 @@ export class ListDevicesComponent implements OnInit, AfterViewInit {
         return false;
     }
 
+    devicesExist() {
+      if( this.devices !== undefined && this.devices.length > 0 ) {
+          return true;
+      }
+      return false;
+    }
+
     selectActiveDevice(device) {
         this.selectedDevice = device;
         this.loadDeviceEvent()

@@ -30,6 +30,7 @@ import { BackendComponent } from './pages/backend/backend.component';
 import { ListCorpComponent } from './modules/list/list-corp/list-corp.component';
 import { FormCorpComponent } from './modules/form-corp/form-corp.component';
 import { AddUserComponent } from './modules/modals/add-user/add-user.component';
+import { EditCorpComponent } from './modules/modals/edit-corp/edit-corp.component';
 
 
 const appRoutes : Routes = [
@@ -69,7 +70,8 @@ const appRoutes : Routes = [
     BackendComponent,
     ListCorpComponent,
     FormCorpComponent,
-    AddUserComponent
+    AddUserComponent,
+    EditCorpComponent
   ],
   imports: [
     BrowserModule,

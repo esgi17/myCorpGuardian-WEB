@@ -1,12 +1,12 @@
 <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Create Corporation</h4>
+    <h4 class="modal-title" id="modal-basic-title">Edit Corporation</h4>
 </div>
 <div class="modal-body" >
-    <form id="form-corp" class="form-signin" [formGroup]="corpForm" (ngSubmit)="submit()">
+    <form id="form-corp" class="form-signin" [formGroup]="editCorpForm" (ngSubmit)="submit()">
         <div class="d-flex flex-row">
             <div class="d-flex flex-column col">
                 <label for="inputName" class="sr-only">Name</label><br>
-                <input type="text" id="inputName" formControlName="name" class="form-control col-5" placeholder="Name" required>
+                <input type="text" id="inputName" formControlName="name" class="form-control col-5" placeholder="Name" value="{{activeCorp.name}}" required >
 
                 <!-- <span class="false" *ngIf="!login.errors"></span>
                 <span class="true" *ngIf="login.errors"></span> -->
@@ -18,7 +18,7 @@
         <div class="d-flex flex-row">
             <div class="d-flex flex-column col">
                 <label for="inputDbUrl" class="sr-only">Database URL</label>
-                <input type="text" formControlName="db_url" id="inputDbUrl" class="form-control col-5" placeholder="Database Url" required>
+                <input type="text" formControlName="db_url" id="inputDbUrl" class="form-control col-5" placeholder="Database Url" value="{{activeCorp.db_url}}" required>
                 <!-- <div *ngIf="password.errors" class="alert" id="a">
                       Le mot de passe doit faire plus de caractères et moins de 16 caractères
                 </div> -->
@@ -27,7 +27,7 @@
         <div class="d-flex flex-row">
             <div class="d-flex flex-column col">
                 <label for="inputDbName" class="sr-only">Database Name</label>
-                <input type="text" formControlName="db_name" id="inputDbName" class="form-control col-5" placeholder="Database Name" required>
+                <input type="text" formControlName="db_name" id="inputDbName" class="form-control col-5" placeholder="Database Name" value="{{activeCorp.db_name}}" required>
                 <!-- <div *ngIf="password.errors" class="alert" id="a">
                       Le mot de passe doit faire plus de caractères et moins de 16 caractères
                 </div> -->
@@ -36,7 +36,7 @@
         <div class="d-flex flex-row">
             <div class="d-flex flex-column col">
                 <label for="inputDbLogin" class="sr-only">Database Login</label>
-                <input type="text" formControlName="db_login" id="inputDbLogin" class="form-control col-5" placeholder="Database Login" required>
+                <input type="text" formControlName="db_login" id="inputDbLogin" class="form-control col-5" placeholder="Database Login" value="{{activeCorp.db_login}}" required>
                 <!-- <div *ngIf="password.errors" class="alert" id="a">
                       Le mot de passe doit faire plus de caractères et moins de 16 caractères
                 </div> -->
@@ -45,7 +45,7 @@
         <div class="d-flex flex-row">
             <div class="d-flex flex-column col">
                 <label for="inputDbPwd" class="sr-only">Database Password</label>
-                <input type="password" formControlName="db_pwd" id="inputDbPwd" class="form-control col-5" placeholder="Database Password" required>
+                <input type="password" formControlName="db_pwd" id="inputDbPwd" class="form-control col-5" placeholder="Database Password" value="{{activeCorp.db_pwd}}" required>
                 <!-- <div *ngIf="password.errors" class="alert" id="a">
                       Le mot de passe doit faire plus de caractères et moins de 16 caractères
                 </div> -->
@@ -53,7 +53,7 @@
         </div>
         <div class="d-flex flex-row">
             <div class="col">
-                <button type="submit" id="submit-login" class="btn btn-lg btn-primary btn-block col-5">Create</button>
+                <button type="submit" id="submit-login" class="btn btn-lg btn-primary btn-block col-5">Edit</button>
             </div>
         </div>
     </form>

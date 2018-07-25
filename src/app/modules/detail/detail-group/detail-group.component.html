@@ -1,10 +1,5 @@
 <div id="container-infoGroup" class="container">
         <div id="content-infoGroup" class="d-flex col">
-            <div class="col-1">
-                <div id="img-group-container" class="container">
-                    <img alt="Image Utilisateur" src="../../../../assets/images/group.png">
-                </div>
-            </div>
             <div class="col">
                 <div id="detail-group" class="container">
                     <div class="col-12">
@@ -27,12 +22,12 @@
             </div>
         </div>
         <div id="container-tableListUser">
-            <table class="table table-bordered">
+            <table class="table table">
                   <thead class="thead-dark">
                       <tr>
                         <th scope="col" class="col-2">#</th>
-                        <th scope="col" class="col-1">Firstname</th>
-                        <th scope="col" class="col-7">Lastname</th>
+                        <th scope="col" class="col-5">Firstname</th>
+                        <th scope="col" class="col-5">Lastname</th>
                       </tr>
                   </thead>
                   <tbody>
@@ -43,5 +38,8 @@
                       </tr>
                   </tbody>
               </table>
+              <div id="notFounded" *ngIf="!usersExist()">
+                <p >No users in this group yet..</p>
+              </div>
           </div>
 </div>

@@ -16,6 +16,13 @@ export class ListEventsComponent implements OnInit {
       return this.events;
   }
 
+  eventsExist() {
+      if( this.events !== undefined && this.events.length > 0 ) {
+          return true;
+      }
+      return false;
+  }
+
   isHome() {
       if( this.router.url == '/home') {
           return true;

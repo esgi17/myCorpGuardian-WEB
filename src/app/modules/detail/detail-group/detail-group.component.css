@@ -2,6 +2,8 @@
     box-shadow: 8px 8px 8px -13px #000000, -8px -8px 8px -13px #000000;
     height : 48vh;
     padding : 0;
+    background-color : #FFFFFF;
+
 }
 
 #content-infoGroup {
@@ -28,4 +30,7 @@
 }
 .detail-group-content p {
     font-size : 18px;
+}
+#notFounded {
+    text-align: center;
 }

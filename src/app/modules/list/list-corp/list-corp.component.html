@@ -1,5 +1,5 @@
-<div id="container-listcorps" class="container-list container-fluid">
-    <h2> Corporation registered </h2>
+<div id="container-listCorps" class="container-list container-fluid">
+    <h2> Corporation registered <span class="btn_addCorp"> <button class="btn btn-md btn-primary" (click)="createCorpModal()">Create Corp.</button> </span></h2>
     <div id="container-tableListCorps" [ngClass]="getStyle()">
         <table class="table table-bordered">
               <thead class="thead-dark">
@@ -23,9 +23,10 @@
                       <td (click)="(modifyDbName = true)"> <span *ngIf="modifyDbName==false || !isSelected(corp.id)" class="label"> {{corp?.db_name}}</span><span *ngIf="modifyDbName && isSelected(corp.id)"><input #corpDbName type="text" (blur)="changeCorpDbName(corp?.id, corpDbName.value)" corpName.value=""></span> </td>
                       <td (click)="(modifyDbLogin = true)"> <span *ngIf="modifyDbLogin==false || !isSelected(corp.id)" class="label"> {{corp?.db_login}}</span><span *ngIf="modifyDbLogin && isSelected(corp.id)"><input #corpDbLogin type="text" (blur)="changeCorpDbLogin(corp?.id, corpDbLogin.value)" corpDbLogin.value=""></span> </td>
                       <td (click)="(modifyDbPassword = true)"> <span *ngIf="modifyDbPassword==false || !isSelected(corp.id)" class="label"> {{corp?.db_pwd}}</span><span *ngIf="modifyDbPassword && isSelected(corp.id)"><input #corpDbPassword type="text" (blur)="changeCorpDbPassword(corp?.id, corpDbPassword.value)" corpDbPassword.value=""></span> </td>
-                      <td> {{corp?.created_at}} </td>
+                      <td> {{corp?.created_at | date : 'dd/MM/yy'}} </td>
                       <td> {{corp?.user?.length}} </td>
                       <td class="d-flex justify-content-around">
+                          <img class="action_btn" (click)="modifyCorp(corp)" alt="modifyCorp" src="../../../assets/images/modify.png">
                           <img class="action_btn" (click)="addUserCorp(corp)" alt="addUser" src="../../../assets/images/add-user.png">
                           <img class="action_btn" (click)="deleteCorp(corp)" alt="delete" src="../../../assets/images/delete.png">
                       </td>

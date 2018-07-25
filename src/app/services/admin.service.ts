@@ -123,26 +123,46 @@ export class AdminService {
       )
   }
 
-    createCorp(datas) {
-        var res = <any>{};
-        res = datas
-        return new Promise(
-            (resolve, reject) => {
-                this.apiService.post('corp', res)
-                    .then(
-                        (result) => {
-                            resolve(result);
-                        },
-                        (error) => {
-                            console.log(error);
-                            reject(error);
-                        }
-                      ).catch( (err) => {
-                        console.log(err);
-                          reject(err);
-                      })
-            }
-        )
+  updateCorp(id, datas) {
+      var res = <any>{};
+      res = datas
+      return new Promise(
+          (resolve, reject) => {
+              this.apiService.put('corp/' + id, res)
+                  .then( (result) => {
+                      resolve(result);
+                  }, (error) => {
+                      console.log(error);
+                      reject(error);
+                  }).catch((err)=> {
+                      console.log(err);
+                      reject(err)
+                  });
+
+          }
+      )
+  }
+
+  createCorp(datas) {
+      var res = <any>{};
+      res = datas
+      return new Promise(
+          (resolve, reject) => {
+              this.apiService.post('corp', res)
+                  .then(
+                      (result) => {
+                          resolve(result);
+                      },
+                      (error) => {
+                          console.log(error);
+                          reject(error);
+                      }
+                    ).catch( (err) => {
+                      console.log(err);
+                        reject(err);
+                    })
+          }
+      )
     }
 
     deleteCorp(id) {

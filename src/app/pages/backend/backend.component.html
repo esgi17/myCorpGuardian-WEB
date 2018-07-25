@@ -1,12 +1,10 @@
 <div id="container-adminHome" class="container-fluid">
-
-    <app-list-corp class="col-12" (activeCorp)="loadActiveCorp($event, content)"></app-list-corp>
-    <div class="col-12 d-flex justify-content-around">
-        <app-form-corp class="col-4"></app-form-corp>
-        <div class="col-4"></div>
+    <div>
+        <app-list-corp class="col-12" (activeCorp)="loadActiveCorp($event, content)" (createCorp)="loadCreateCorp($event,content)" (editCorp) = "loadEditCorp($event, content)"></app-list-corp>
+        <ng-template #content let-c="close" let-d="dismiss">
+            <app-add-user *ngIf="addUserActive" [activeCorp]="activeCorp"></app-add-user>
+            <app-form-corp *ngIf="createCorpActive" [createCorp]="createCorp"></app-form-corp>
+            <app-edit-corp *ngIf="editCorpActive" [activeCorp]="activeCorp"></app-edit-corp>
+        </ng-template>
     </div>
-    <ng-template #content let-c="close" let-d="dismiss">
-        <app-add-user [activeCorp]="activeCorp"></app-add-user>
-    </ng-template>
-        <!-- <app-list-corp-admin class="col"></app-list-corp-admin> -->
 </div>

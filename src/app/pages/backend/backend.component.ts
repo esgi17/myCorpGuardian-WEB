@@ -12,6 +12,9 @@ import { NgbModule, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-boots
 export class BackendComponent implements OnInit {
   activeCorp : Object;
   closeResult: string;
+  createCorpActive: Boolean;
+  editCorpActive: Boolean;
+  addUserActive: Boolean;
 
   constructor( private authService: AuthService, private modalService: NgbModal, private router: Router) {
       this.authService.checkLogin()
@@ -31,36 +34,59 @@ export class BackendComponent implements OnInit {
           )
    }
 
-   loadActiveCorp($event, content) {
-      this.activeCorp = $event;
-      this.open(content, 'addUser', $event.id);
+   loadCreateCorp($event, content) {
+      if( $event ) {
+          this.createCorpActive = $event;
+          this.openModal(content)
+              .then( () => {
+                  this.createCorpActive = false;
+              })
+              .catch( (err) => {
+                  console.log(err);
+              })
+      }
    }
 
+   loadEditCorp($event, content) {
+      this.activeCorp = $event;
+      this.editCorpActive = true;
+      this.openModal(content)
+          .then( () => {
+              this.activeCorp = null;
+              this.editCorpActive = false;
+          })
+   }
 
-
-   open(content, type, data) {
-       switch( type ) {
-           case 'addUser' :
-               this.openModal(content);
-               console.log(type);
-               break;
-           case 'deleteCorp' :
-               break;
-           case 'createCorp' :
-               break;
-           case 'deleteUser' :
-               break;
-       }
-
-
+   loadActiveCorp($event, content) {
+        this.activeCorp = $event;
+        this.addUserActive = true;
+        this.openModal(content)
+            .then( () => {
+                this.activeCorp = null;
+                this.addUserActive = false;
+            })
+            .catch( (err) => {
+                console.log(err);
+            })
    }
 
    openModal(content) {
-       this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-           this.closeResult = `Closed with: ${result}`;
-       }, (reason) => {
-           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-       });
+      return new Promise(
+          (resolve, reject) => {
+              this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+                  this.closeResult = `Closed with: ${result}`;
+                  resolve();
+              }, (reason) => {
+                  this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+                  resolve();
+              }).catch(
+                  (err) => {
+                      reject(err);
+                  }
+              );
+          }
+      )
+
    }
 
    private getDismissReason(reason: any): string {

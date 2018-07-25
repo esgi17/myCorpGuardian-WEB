@@ -11,5 +11,12 @@ export class DetailUserComponent {
 
     constructor( ) { }
 
-
+    eventsExist() {
+      var res = <any>{};
+      res = this.activeUser
+      if( res.events !== undefined && res.events.length > 0 ) {
+          return true;
+      }
+      return false;
+    }
 }
